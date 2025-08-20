@@ -1,5 +1,5 @@
 # ⚡ Repositório de Atividades com FastAPI
-<img src="/Ícone FastAPI//iconFastAPI.png" width="60" alt="FastAPI logo"/>
+<img src="/Ícone FastAPI//iconFastAPI.png" width="60" justify-content="center" align-items="center" alt="FastAPI logo"/>
 
 Este repositório reúne uma série de atividades feitas com **FastAPI**, explorando desde os conceitos básicos até aplicações mais avançadas em desenvolvimento de APIs modernas, rápidas e escaláveis com Python.
 
