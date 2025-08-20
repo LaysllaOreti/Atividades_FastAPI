@@ -4,9 +4,9 @@
   <img src="/Ícone FastAPI//iconFastAPI.png" alt="Ícone do Java" width="120">
 </p>
 
-Este repositório reúne uma série de atividades feitas com **FastAPI**, explorando desde os conceitos básicos até aplicações mais avançadas em desenvolvimento de APIs modernas, rápidas e escaláveis com Python.
+Este repositório reúne uma sequência de atividades feitas com FastAPI, explorando desde os conceitos iniciais até a construção de APIs modernas, performáticas e escaláveis com Python.
 
-As atividades estão organizadas de forma progressiva, permitindo que estudantes e iniciantes entendam a estrutura do framework e consigam aplicar os conceitos de maneira prática.
+As atividades são organizadas de forma progressiva, focadas na prática e voltadas para quem quer aprender desenvolvendo de verdade.
 
 ---
 
