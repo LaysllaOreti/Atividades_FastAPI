@@ -47,7 +47,7 @@ async def get_personagens(db: Any = Depends(fake_db)):
     return personagens
 
 @app.get("/personagens/{personagem_id}", description="Retorna um personagem com um ID específico")
-async def ger_personagem(personagem_id: int):
+async def get_personagem(personagem_id: int):
     try:
         personagem = personagens[personagem_id]
         return personagem
