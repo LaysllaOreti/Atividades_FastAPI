@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status, Response, Depends
+from fastapi import FastAPI, HTTPException, status, Response, Depends, Body
 from models import PersonagensOIncrivelMundoDeGumball
 from typing import Any
 
@@ -8,7 +8,7 @@ app = FastAPI(
     description="Uma API feita com os personagens principais da série animada 'O incrível mundo de Gumball'."
 )
 
-def fake_db():
+def fake_db(): 
     try:
         print("Connecting to the bank")
     finally:
@@ -95,6 +95,7 @@ personagens = {
 async def raiz():
     return {"mensagem": "API - O Incrível Mundo de Gumball"}
 
+# Método GET
 @app.get("/personagens")
 async def get_personagens(db: Any = Depends(fake_db)):
     return personagens
@@ -109,12 +110,14 @@ async def get_personagem(personagem_id: int):
             detail="Esse personagem não foi encontrado."
         )
 
+# Método POST
 @app.post("/personagens", status_code=status.HTTP_201_CREATED, description="Criação de um novo personagem")
 async def post_personagem(personagem: PersonagensOIncrivelMundoDeGumball):
     next_id = len(personagens) + 1
     personagens[next_id] = personagem.dict()
     return personagens[next_id]
 
+# Método PUT
 @app.put("/personagens/{personagem_id}", status_code=status.HTTP_202_ACCEPTED)
 async def put_personagem(personagem_id: int, personagem: PersonagensOIncrivelMundoDeGumball):
     if personagem_id in personagens:
@@ -126,6 +129,7 @@ async def put_personagem(personagem_id: int, personagem: PersonagensOIncrivelMun
             detail="Esse personagem não foi encontrado."
         )
 
+# Método DELETE
 @app.delete("/personagens/{personagem_id}")
 async def delete_personagem(personagem_id: int):
     if personagem_id in personagens:
@@ -136,6 +140,19 @@ async def delete_personagem(personagem_id: int):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Personagem não encontrado"
         )
+    
+# Método PATCH
+@app.patch("/personagens/{personagem_id}", status_code=status.HTTP_202_ACCEPTED)
+async def patch_personagem(personagem_id: int, personagem: dict = Body(...)):
+    if personagem_id not in personagens:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Esse personagem não foi encontrado."
+        )
+
+    # Vai atualizar apenas os campos alterados
+    personagens[personagem_id].update(personagem)
+    return personagens[personagem_id]
 
 
 if __name__ == "__main__":
