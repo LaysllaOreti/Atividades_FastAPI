@@ -1,11 +1,12 @@
 from typing import Optional
-from pydantic import BaseModel as SCBaseModel #"trocar" o nome dele somente aqui
+from pydantic import BaseModel as SCBaseModel
 
-class BandaSchema(SCBaseModel):
+class BandasSchema(SCBaseModel):
     id: Optional[int] = None
     nome: str
-    qnt_integrantes: int
+    qtd_integrantes: int
     tipo_musical: str
 
     class Config:
-        orm_mode = True
+        # Será em formato JSON, porém estará conectado com o banco de dados
+        orm_model = True
