@@ -32,7 +32,7 @@ async def post_personagens(personagem: PersonagensSchema, db: AsyncSession = Dep
     novo_personagem = PersonagensModel(
         nome=personagem.nome, 
         idade=personagem.idade, 
-        grupo=personagem.grupo
+        ocupacao=personagem.ocupacao
     )
     
     db.add(novo_personagem)

@@ -6,25 +6,24 @@ from typing import Optional
 
 #DBBaseModel é uma clare declarativa do SQLAlchemy
 
-
 #Crio a classe PersonagensModel que herda as settings que passei dentro de configs
 class PersonagensModel(settings.DBBaseModel):
     #Determino o nome da tabela dentro do meu banco
-    __tablename__ = "personagenstwd"
+    __tablename__ = "personagensbrba"
 
     #Determino os campos dentro da minha tabela
     id : int = Column(Integer(), primary_key=True, autoincrement=True)
      #Para determinar um campo que não pode ser nulo
     nome : str = Column(String(255), nullable=False)
     idade : int = Column(Integer())
-    grupo : str = Column(String(255), nullable=False)
+    ocupacao : str = Column(String(255), nullable=False)
 
 
 #Criar a classe para o PersonagensModelPatch
 class PersonagensSchemaPatch(BaseModel):
     nome: Optional[str] = None
     idade: Optional[int] = None
-    grupo: Optional[str] = None
+    ocupacao: Optional[str] = None
 
     class Config:
         from_attributes = True

@@ -9,7 +9,7 @@ class PersonagensSchema(SCBaseModel):
     id : Optional[int] = None 
     nome : str
     idade : int
-    grupo : str
+    ocupacao : str
 
     class Config:
         #Esse chemas vai ser no formato JSON que ferá a comunicação com o Banco
