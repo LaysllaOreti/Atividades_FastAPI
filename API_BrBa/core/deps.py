@@ -1,15 +1,17 @@
-#Abre e fecha o banco para fazer a injeção dentro do banco
+# abre e fecha a conexão com o banco para realizar a injeção de dependência
 
 from typing import Generator
 from sqlalchemy.ext.asyncio import AsyncSession
 from core.database import Session
 
-#Para dar um GET dentro do banco, precisop de uma função
+# função responsável por fornecer uma sessão para operações no banco (GET, POST, etc.)
 async def get_session() -> Generator:
-    session : AsyncSession = Session()
+    session: AsyncSession = Session()
 
-    #TRY
+    # tenta criar e usar a sessão
     try:
-        yield session #Ele devolve a sessão, mas também a função determinada
+        # retorna a sessão ativa para ser utilizada nos endpoints
+        yield session
+    # ao final da execução, fecha a conexão com o banco
     finally:
-        await session.close() #Após utilizar a sessão so depois ele fechará o banco
+        await session.close()

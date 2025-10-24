@@ -1,28 +1,31 @@
-#Setamos o banco que usaremos
+# setamos o banco que será utilizado
 
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.asyncio import  create_async_engine, AsyncEngine, AsyncSession
-#De configs que está dentro de core importa a variável Settings
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine, AsyncSession
+
+# de core.configs importamos a variável settings
 from core.configs import settings
 
 
-#Esse código vai abrir e fechar a conexão com o nosso banco de dados
+# este código é responsável por abrir e fechar a conexão com o banco de dados
 
-#Váriavel que recebe o AsyncEngine
-engine : AsyncEngine = create_async_engine(settings.DB_URL)
+# variável que recebe o objeto AsyncEngine
+engine: AsyncEngine = create_async_engine(settings.DB_URL)
 
-#sessionmaker retorna uma classe para nós
-Session : AsyncEngine = sessionmaker(
-    #Vai evitar que commit automaticamente
-    autocommit = False,
+# sessionmaker retorna uma classe de sessão configurada
+Session: AsyncEngine = sessionmaker(
+    # evita que o commit seja executado automaticamente
+    autocommit=False,
 
-    #Evita uma descarga de dados sem sina
-    autoflush= False,
+    # evita o envio automático dos dados sem sinal explícito
+    autoflush=False,
 
-    #Só vai expirar quando eu der o sinla
-    expire_on_commit= False,
+    # impede que os objetos expirem após o commit
+    expire_on_commit=False,
+
+    # define o uso de sessões assíncronas
     class_=AsyncSession,
 
-    #Pega as informações do engine
+    # vincula a sessão ao engine configurado
     bind=engine
 )

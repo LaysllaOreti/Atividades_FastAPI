@@ -1,7 +1,7 @@
 # ⚡ Repositório de Atividades com FastAPI
 
 <p align="center">
-  <img src="/Ícone FastAPI//iconFastAPI.png" alt="Ícone do Java" width="120">
+  <img src="/Icon_FastAPI/iconFastAPI.png" alt="Ícone do FastAPI" width="120">
 </p>
 
 Este repositório reúne uma sequência de atividades feitas com FastAPI, explorando desde os conceitos iniciais até a construção de APIs modernas, performáticas e escaláveis com Python.

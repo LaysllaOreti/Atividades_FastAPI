@@ -1,16 +1,16 @@
-#Converte para JSON para fazer a comunicação com o banco
+# converte os dados para JSON para permitir a comunicação com o banco
 from typing import Optional
-#Como o SQLAlchemy tem o BaseModel dele, não podemos confundir então uso o as para determinar o SCBaseModel
+# como o SQLAlchemy também possui um BaseModel, usamos "as" para renomear o do Pydantic e evitar confusão
 from pydantic import BaseModel as SCBaseModel
 
-#Garante que a requisição tenha os campos iguais aos definidos no Model
+# garante que a requisição siga os mesmos campos definidos no model
 class PersonagensSchema(SCBaseModel):
-    #Pode estar ausente ou ser None
-    id : Optional[int] = None 
-    nome : str
-    idade : int
-    ocupacao : str
+    # pode estar ausente ou ter valor None
+    id: Optional[int] = None
+    nome: str
+    idade: int
+    ocupacao: str
 
     class Config:
-        #Esse chemas vai ser no formato JSON que ferá a comunicação com o Banco
+        # define que o schema será convertido para JSON para comunicação com o banco
         from_attributes = True

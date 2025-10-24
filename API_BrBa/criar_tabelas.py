@@ -1,19 +1,19 @@
-#Código simples para comunicação se a tabela foi criada
+# código simples para verificar e criar as tabelas no banco
 
 from core.configs import settings
 from core.database import engine
 from models import all_models
 
 async def create_table() -> None:
-    print("Criando as tabelas no banco da API TWD")
+    print("criando as tabelas no banco da API BrBa...")
 
     async with engine.begin() as conn:
-        #Criar um bloco de contexto assíncrono
+        # cria um bloco de contexto assíncrono
         await conn.run_sync(settings.DBBaseModel.metadata.drop_all)
-        #Excluir caso já exista
+        # exclui as tabelas existentes (caso já existam)
         await conn.run_sync(settings.DBBaseModel.metadata.create_all)
     
-    print("Tabelas criadas com sucesso!")
+    print("tabelas criadas com sucesso!")
 
 
 if __name__ == "__main__":

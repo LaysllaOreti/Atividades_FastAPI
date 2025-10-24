@@ -9,7 +9,7 @@ origins = ["http://localhost", "http://localhost:8080", "http://localhost:5500",
 app = FastAPI(title="API DE PERSONAGENS DE BREAKING BAD")
 
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
-#Puxa o prefixo setado no meu API
+# vai puxar o prefixo setado na minha API
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
